@@ -1,0 +1,53 @@
+pseudofunc:
+function palindrome(str)
+	str=tolowercase(str)
+	left = 0    //giving two pointers at start and end 
+	right = length(str)-1
+	while left < right
+		if str[left] != str[right] //comparing the alphabets
+			return false
+		left = left+1
+		right=right+1
+	return true
+pseudocode:
+input str
+palindrome(input str)
+
+
+pseudofunction:
+function prime(num)
+	if num<2
+		return false
+	for i =2 to num-1 
+		if num % i == 0 
+		return false
+	return true
+pseudocode:
+input num
+prime(num)
+
+pseudofunction:
+function leapyear(year)
+	if(year%4==0 && year%100!=0)
+		return true
+	else if(year%4==0 && year%100==0 && year%400==0)
+		return true
+	else
+	   return false
+
+pseudocode:
+input year
+leapyear(input year)
+		
+
+pseudofunction:
+function average(n1,n2,n3)
+	avg=(n1+n2+n3)/3
+	return avg
+	
+pseudocode:
+input n1
+input n2
+input n3
+average(n1,n2,n3)
+print avg

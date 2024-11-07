@@ -51,3 +51,19 @@ input n2
 input n3
 average(n1,n2,n3)
 print avg
+
+
+pseudofunction:
+function decimaltobinary(num)
+	if num ==0
+		return 0
+	binary = ""
+	if num>0
+		reminder = num%2
+		binary = reminder + binary
+		num = num/2
+	return binary
+	
+pseudocode:
+input num
+decimaltobinary(num)

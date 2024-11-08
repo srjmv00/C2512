@@ -1,0 +1,72 @@
+pseudofunction:
+function isEvenOrOdd(n)
+	if(n%2==0)
+		print "number is even"
+	else
+		print "number is odd"
+
+function isEvenOrOddTest()
+	input number
+	isEvenOrOdd(number)
+
+pseudocode:
+isEvenOrOddTest()
+	
+	
+
+pseudofunction:
+function resverseNumber(num)
+	reversed num = 0
+	while num > 0
+		reminder = num%10
+		reversed num = (reversed num * 10)+reminder
+		number = number/10
+	return reversed num
+
+function reverseNumberTest()
+	input number
+	result = reverseNumber(number)
+	print result
+pseudocode:
+reverseNumberTest()
+		
+
+
+pseudofunction:
+function factoialNumber(num)
+	factorial = 1
+	for i from num to 1
+		factorial = factorial * i	
+	return factorial
+	
+function factorialNumberTest()
+	input number
+	result = factorialNumeber(number)
+	print result
+	
+pseudocode:
+factorialNumberTest()
+
+
+pseudofunction:
+function findElementFromArray(num)
+	for i from 0 to array.length-1
+		if(num == array[i])
+			return true	
+		return false
+		
+function findElementFromArrayTest()
+	input number
+	result = findElementFromArray(number)
+	if result
+		print "element is found"
+	else
+		pint"element not found"
+
+
+pseudocode:
+findElementFromArrayTest()
+	
+	
+		
+	

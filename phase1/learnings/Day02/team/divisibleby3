@@ -1,0 +1,28 @@
+pseudocode:
+
+pseudo function:
+ function isDivisibleByThree(number->int)
+        if(number%3==0) //checking whether the number is divisible by 3
+            return true
+        end if
+        
+        return false
+
+
+
+// function isDivisibleByThreeTest()
+// input number
+// result=isDivisibleByThree(number)
+// print result
+
+ function isDivisibleByThreeTesttwo()
+       input number
+       result=isDivisibleByThree(number)
+       if (result == true)
+          print "The number is divisible by 3"
+       else
+          print "The number is not divisible by 3"
+
+pseudocode:
+    // isDivisibleByThreeTest()
+    isDivisibleByThreeTesttwo()

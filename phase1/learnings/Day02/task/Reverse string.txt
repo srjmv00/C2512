@@ -1,0 +1,64 @@
+* Reverse string**
+
+pseudo function:
+function reverseString(inputString -> string)
+    start = 0
+    end = length of inputString - 1
+    temp character
+
+    while start < end
+        temp = inputString[start]
+        inputString[start] = inputString[end]
+        inputString[end] = temp
+        start ++
+        end --
+
+        print inputString
+
+function reverseStringTest()
+    input inputString
+    reverseString(inputString)
+
+
+pseudocode:
+    reverseStringTest()
+
+
+C++ code
+
+#include <iostream>
+using namespace std;
+
+void reverseString(char inputString[]) {
+    int start = 0;
+    int end = 0;
+
+    while (inputString[end] != '\0') {
+        end++;
+    }
+    end--;  
+
+    while (start < end) {
+        char temp = inputString[start];
+        inputString[start] = inputString[end];
+        inputString[end] = temp;
+        start++;
+        end--;
+    }
+}
+
+void reverseStringTest(void)
+{
+    char inputString[100];
+    cout << "Enter a string: ";
+    cin.getline(inputString, 100);  
+    
+    reverseString(inputString);
+    cout << "Reversed string: " << inputString << endl;
+}
+
+int main() 
+{
+    reverseStringTest()
+    return 0;
+}

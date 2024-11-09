@@ -1,0 +1,22 @@
+pseudofunction:
+function findSum( number -> int ) -> int
+
+    sum = 0
+    for i from 0
+        print "enter a number"
+        if( ( number % 3) || ( number % 5) )
+            sum = sum + number
+            print sum
+        else if
+            print "enter number divisible by 3 or 5"
+        else 
+            if input = stop
+            print "stop"
+            break
+
+function findSumTest()
+    input number
+    result = findSum(number)
+
+pseudocode:
+findSumTest()

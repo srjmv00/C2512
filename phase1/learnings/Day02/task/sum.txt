@@ -1,0 +1,107 @@
+**find sum*
+
+// with using array
+
+pseudofunctions:
+function findSum(number -> int) -> int
+    numbers[10]
+    sum = 0
+    
+    for i from 0 to 9
+         print " enter number "
+         push number[i]
+         sum += number[i]
+
+function findSumTest()
+    input number
+    result = findSum(number)
+    print result
+
+pseudocode:
+findSumTest()
+
+C++ code
+
+#include <iostream>
+using namespace std;
+
+int findSum( int number )
+{
+    int numbers[10];
+    int sum = 0;
+    
+    for (int i = 0; i < 10; i++)
+    {
+        cout << " enter number ";
+        cin >> numbers[i];
+        sum += numbers[i];
+    } 
+    return sum;
+}
+
+void findSumTest(void)
+{
+    int number;
+    int result = findSum(number);
+    cout << "sum of numbers is" << result;
+}
+    
+int main(void)
+{
+    findSumTest();
+    
+    return 0 ;
+}
+         
+         
+
+//without using array
+
+pseudofunction:
+function findSum(number -> int) -> int
+    sum = 0
+    for i from 0 to 9
+         print "enter the number"
+         sum = sum + number
+         return sum
+
+function findSumTest()
+    input number
+    result = findSum(number)
+    print "the sum is" + result
+
+pseudocode:
+findSumTest()
+
+C++ code
+
+#include<iostream>
+using std :: cout;
+using std :: cin;
+
+int findSum(int number)
+{
+    int sum = 0;
+    for (int i = 0; i < 10; i++ )
+    {
+        cout << "enter the number " << (i +1) << ":";
+        cin >> number;
+        sum += number;
+    } 
+    return sum;
+}
+
+void findSumTest(void)
+{
+    int number;
+    int result = findSum(number);
+    cout << "The sum of numbers is : " << result ;
+}
+
+int main(void)
+{
+    
+    findSumTest();
+    return 0;
+
+}

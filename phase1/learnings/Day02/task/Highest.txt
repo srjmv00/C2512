@@ -1,0 +1,59 @@
+*find highest**
+
+pseudofunction:
+function findHighest( number -> int) ->int
+int highest = 0
+    for i from 0 to 9
+        print "enter number"
+        if( number > highest ) 
+             highest = number
+    return highest
+
+function findHighestTest()
+     input number
+     highest = findHighest()
+     print highest
+
+pseudocode:
+findHighestTest()
+       
+        
+C++ code
+
+
+
+#include <iostream>
+using std :: cout;
+using std :: cin;
+
+int findHighest()  
+{
+    int highest = 0;  
+    int number;
+
+    for (int i = 0; i < 10; i++)  
+    {
+        cout << "Enter number " << i + 1 << ": ";
+        cin >> number;
+
+        if (number > highest) 
+        {
+            highest = number;
+        }
+    }
+
+    return highest;  
+}
+void findHighestTest(void)
+{
+    int highestNumber = findHighest();
+    cout << "The highest number is: " << highestNumber ;
+}
+
+int main(void) 
+{
+    findHighestTest();
+
+
+    return 0;
+}

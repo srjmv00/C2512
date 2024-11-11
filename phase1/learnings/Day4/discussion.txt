@@ -1,0 +1,82 @@
+"Read patients' temperatures (integer) from keyboard till we read 0
+    by using array / collection."
+Find average temperature (integer), 
+prime temperatures sum(example: 41, prime number temperature), 
+minimum 3 digit temperatures sum, 
+minimum temperature, 
+odd temperatures sum (example: 31), and
+2nd maximum odd temperature.  
+Check minimum temperature is also prime temperature.
+Use coding standards and best practices to write pseudo code and c++ code.
+Plan the task codes to make as reusable functions.
+
+-------------------------------------------------------------------------------
+
+
+function readTemperature(temperature->[int] , size->int&)
+function findTemperatureSum(temperature->[int] , size ->int)->int
+function findTemperatureAverage(TemperatureSum , size ->int)->int
+function isPrimeTemperature(number->int)->bool
+function findPrimeTemperatureSum(temperature->[int] , size ->int)->int
+function isNumberMinimum3Digit(number->int)->bool
+function findMin3DigitSum(temperature->[int], size -> int) -> int 
+function findMinTemperature(temperature->[int] , size ->int)->int
+function isOddTemperature(number -> int) -> bool
+function findSumOfOddTemperature(temperature->[int] , size ->int)->int
+function find2ndMaxOddTemperature(temperature->[int] , size ->int)->int
+function Test()
+    //temperature [int]
+    size=0
+    readTemperature(temperature, size)
+    TemperatureSum= findTemperatureSum(temperature->[int] , size ->int)->int
+    averageTemperature = findTemperatureAverage(TemperatureSum, size)
+    primeTemperatureSum = findPrimeTemperatureSum(temperature, size)
+    min3DigitTemperatureSum = findMin3DigitSum(temperature, size)
+    minimumTemperature = findMinTemperature(temperature, size)
+    oddTemperatureSum = findSumOfOddTemperature(temperature , size)
+    secondMaxOddTemperature = find2ndMaxOddTemperature(temperature, size)
+    print averageTemperature
+    print primeTemperatureSum
+    print min3DigitTemperatureSum
+    print minimumTemperature
+    print oddTemperatureSum
+    print secondMaxOddTemperature
+    if isprime(minimumTemperature)
+         print "The minimum temperature is an prime number"
+    else
+         print "The minimum temperature is not a prime number"  
+
+pseudoMain 
+    Test()
+
+
+//--------------pseudocode------------------------
+
+function readTemperature(temperatures->[int],size->int&)
+       
+       input i=0
+       int currentTemperature
+       while(true)
+           print "enter the patient's temperature"
+           read currentTemperature
+           if(currentTemperature!=0)
+                ++size
+                temperatures[i]=currentTemperature
+                ++i
+            else
+               break
+            end if
+        end while
+end function                
+
+function findTemperatureSum(temperature->[int] , size ->int)->int
+       int sum = 0
+       for i in temperatures
+             sum + = temperatures[i]
+       end for
+       return sum
+end function
+
+function findTemperatureAverage(TemperatureSum->int , size ->int)->int
+        return (TemperatureSum/size);
+end function

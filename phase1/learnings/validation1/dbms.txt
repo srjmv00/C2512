@@ -1,0 +1,30 @@
+I have UNF table 
+
+Booking Details
+    booking_id, airline_id,airline_name
+    customer_id,customer_name,customer_city
+    departure_airport,arrival_airport,departure_time,arrival_time,
+    class_of_travel,payment_mode,
+
+    ticket1_seat_number, ticket1_seat_price,
+    ticket2_seat_number, ticket2_seat_price,
+    ticket3_seat_number, ticket3_seat_price,
+
+    room1_booking_id, room1_type, room1_price, room1_nights, room1_total_amount
+    room2_booking_id, room2_type, room2_price, room2_nights, room2_total_amount
+
+I formed below NF tables.
+Customer:
+    customer_id,customer_name,customer_city
+      
+Ticket Details:
+    ticket_id,seat_number,seat_price,payment_mode 
+
+Room Booking Details:
+    room_booking_id,room_type,room_price,number_of_nights,total_amount	
+      
+Booking Table:
+    booking_id,customer_id,airline_id,airline_name,
+    departure_airport,arrival_airport,departure_time,
+    arrival_time,class_of_travel,ticket_id,
+    room_booking_id

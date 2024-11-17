@@ -28,3 +28,252 @@ Booking Table:
     departure_airport,arrival_airport,departure_time,
     arrival_time,class_of_travel,ticket_id,
     room_booking_id
+
+
+------
+
+SELECT TABLE_NAME FROM USER_TABLES;
+
+CREATE TABLE Customer (
+    customer_id INT PRIMARY KEY,
+    customer_name VARCHAR2(100) NOT NULL,
+    customer_city VARCHAR2(100) NOT NULL
+);
+
+CREATE TABLE TicketDetails (
+    ticket_id INT PRIMARY KEY,
+    seat_number VARCHAR2(10) NOT NULL,
+    seat_price DECIMAL(10, 2) NOT NULL
+);
+
+CREATE TABLE RoomBookingDetails (
+    room_booking_id INT PRIMARY KEY,
+    room_type VARCHAR2(50) NOT NULL,
+    room_price DECIMAL(10, 2) NOT NULL,
+    number_of_nights INT NOT NULL,
+    total_amount DECIMAL(10, 2)
+);
+
+CREATE TABLE Booking (
+    booking_id INT PRIMARY KEY,
+    customer_id INT NOT NULL,
+    airline_id INT NOT NULL,
+    airline_name VARCHAR2(100) NOT NULL,
+    departure_airport VARCHAR2(100) NOT NULL,
+    arrival_airport VARCHAR2(100) NOT NULL,
+    departure_time DATE NOT NULL,
+    arrival_time DATE NOT NULL,
+    class_of_travel VARCHAR2(20) NOT NULL,
+    ticket_id INT NOT NULL,
+    room_booking_id INT
+);
+
+desc Customer;
+desc RoomBookingDetails;
+desc TicketDetails;
+desc Booking;
+commit;
+
+
+ALTER TABLE TicketDetails
+ADD (payment_mode VARCHAR2(50) NOT NULL);
+COMMIT;
+desc TicketDetails;
+
+insert into Customer(Customer_id,Customer_name,Customer_city)
+values(1, 'abel', 'New York');
+insert into CUSTOMER(CUSTOMER_ID ,Customer_name,Customer_city)
+values(2, 'Minhaj', 'Kerala');
+insert into Customer(Customer_id,Customer_name,Customer_city)
+values(3, 'Sreya', 'Banglore');
+
+update CUSTOMER SET customer_name = 'Abel', customer_city = 'Mumbai' where customer_id = 1;
+
+select * from customer;
+
+insert into ROOMBOOKINGDETAILS(ROOM_BOOKING_ID,ROOM_TYPE,ROOM_PRICE,NUMBER_OF_NIGHTS,TOTAL_AMOUNT)
+values(101, 'Delux', 150,2,300);
+insert into ROOMBOOKINGDETAILS(ROOM_BOOKING_ID,ROOM_TYPE,ROOM_PRICE,NUMBER_OF_NIGHTS,TOTAL_AMOUNT)
+values(102, 'Suite', 200,3,600);
+insert into ROOMBOOKINGDETAILS(ROOM_BOOKING_ID,ROOM_TYPE,ROOM_PRICE,NUMBER_OF_NIGHTS,TOTAL_AMOUNT)
+values(103, 'Economy', 100,1,100);
+
+select * from ROOMBOOKINGDETAILS;
+
+COMMIT;
+
+insert into TICKETDETAILS(TICKET_ID,SEAT_NUMBER,SEAT_PRICE,PAYMENT_MODE)
+values(201, 'A12', 120,'Credit');
+insert into TICKETDETAILS(TICKET_ID,SEAT_NUMBER,SEAT_PRICE,PAYMENT_MODE)
+values(202, 'B15', 80,'Debit');
+insert into TICKETDETAILS(TICKET_ID,SEAT_NUMBER,SEAT_PRICE,PAYMENT_MODE)
+values(203, 'C10', 100,'Cash');
+
+select * from TICKETDETAILS;
+
+update TICKETDETAILS set PAYMENT_MODE = 'Credit' where TICKET_ID = 201;
+
+insert into BOOKING(BOOKING_ID,CUSTOMER_ID,AIRLINE_ID,AIRLINE_NAME,
+                    DEPARTURE_AIRPORT,ARRIVAL_AIRPORT,DEPARTURE_TIME,
+                    ARRIVAL_TIME,CLASS_OF_TRAVEL,TICKET_ID,ROOM_BOOKING_ID)
+values(301, 1, 401,'Airways','JFK','LAX', TO_DATE('2024-11-20','yyyy/mm/dd'),TO_DATE('2024-11-20','yyyy/mm/dd'),'Economy',201,103);
+insert into BOOKING(BOOKING_ID,CUSTOMER_ID,AIRLINE_ID,AIRLINE_NAME,
+                    DEPARTURE_AIRPORT,ARRIVAL_AIRPORT,DEPARTURE_TIME,
+                    ARRIVAL_TIME,CLASS_OF_TRAVEL,TICKET_ID,ROOM_BOOKING_ID)
+values(302, 2, 402,'Sky Airlines','LAX','ORD',TO_DATE('2024-11-21','yyyy/mm/dd'),TO_DATE('2024-11-22','yyyy/mm/dd'),'Business',202,101 );
+insert into BOOKING(BOOKING_ID,CUSTOMER_ID,AIRLINE_ID,AIRLINE_NAME,
+                    DEPARTURE_AIRPORT,ARRIVAL_AIRPORT,DEPARTURE_TIME,
+                    ARRIVAL_TIME,CLASS_OF_TRAVEL,TICKET_ID,ROOM_BOOKING_ID)
+values(303, 3, 403,'Flyhigh','ORD','MIA', TO_DATE('2024-11-20','yyyy/mm/dd'),TO_DATE('2024-11-21','yyyy/mm/dd'),'Economy',201,103);
+insert into BOOKING(BOOKING_ID,CUSTOMER_ID,AIRLINE_ID,AIRLINE_NAME,
+                    DEPARTURE_AIRPORT,ARRIVAL_AIRPORT,DEPARTURE_TIME,
+                    ARRIVAL_TIME,CLASS_OF_TRAVEL,TICKET_ID,ROOM_BOOKING_ID)
+values(304, 1, 404,'Fastjet','ATL','SEA', TO_DATE('2024-11-20','yyyy/mm/dd'),TO_DATE('2024-11-22','yyyy/mm/dd'),'First Class',203,101);
+insert into BOOKING(BOOKING_ID,CUSTOMER_ID,AIRLINE_ID,AIRLINE_NAME,
+                    DEPARTURE_AIRPORT,ARRIVAL_AIRPORT,DEPARTURE_TIME,
+                    ARRIVAL_TIME,CLASS_OF_TRAVEL,TICKET_ID,ROOM_BOOKING_ID)
+values(305, 2, 405,'Airglobal','DFW','BOS', TO_DATE('2024-11-21','yyyy/mm/dd'),TO_DATE('2024-11-22','yyyy/mm/dd'),'Economy',201,102);
+insert into BOOKING(BOOKING_ID,CUSTOMER_ID,AIRLINE_ID,AIRLINE_NAME,
+                    DEPARTURE_AIRPORT,ARRIVAL_AIRPORT,DEPARTURE_TIME,
+                    ARRIVAL_TIME,CLASS_OF_TRAVEL,TICKET_ID,ROOM_BOOKING_ID)
+values(306, 3, 406,'Skyjet','MIA','SFO',TO_DATE('2024-11-23','yyyy/mm/dd'),TO_DATE('2024-11-24','yyyy/mm/dd'),'Business',203,102);
+
+desc booking;
+
+select * from booking;
+commit;
+
+
+CUSTOMER_ID | CUSTOMER_NAME | CUSTOMER_CITY
+1           | Abel          | Mumbai
+2           | Minhaj        | Kerala
+3           | Sreya         | Banglore
+
+
+TICKET_ID | SEAT_NUMBER | SEAT_PRICE | PAYMENT_MODE"
+201       | A12         | 120        | Credit
+202       | B15         | 80         | Debit
+203       | C10         | 100        | Cash
+
+
+ROOM_BOOKING_ID | ROOM_TYPE | ROOM_PRICE | NUMBER_OF_NIGHTS | TOTAL_AMOUNT
+101             | Delux     | 150        | 2                | 300
+102             | Suite     | 200        | 3                | 600
+103             | Economy   | 100        | 1                | 100
+
+
+BOOKING_ID | CUSTOMER_ID | AIRLINE_ID | AIRLINE_NAME | DEPARTURE_AIRPORT | ARRIVAL_AIRPORT | DEPARTURE_TIME | ARRIVAL_TIME | CLASS_OF_TRAVEL | TICKET_ID | ROOM_BOOKING_ID 
+301        | 1           | 401        | Airways      | JFK               | LAX             | 20/11/24       | 20/11/24     | Economy         | 201       | 101
+302        | 2           | 402        | Sky Airlines | LAX               | ORD             | 21/11/24       | 22/11/24     | Business        | 202       | 101
+303        | 3           | 403        | Flyhigh      | ORD               | MIA             | 20/11/24       | 21/11/24     | Economy         | 201       | 103
+304        | 1           | 404        | Fastjet      | ATL               | SEA             | 20/11/24       | 22/11/24     | First Class     | 203       | 101
+305        | 2           | 405        | Airglobal    | DFW               | BOS             | 21/11/24       | 22/11/24     | Economy         | 201       | 102
+306        | 3           | 406        | Skyjet       | MIA               | SFO             | 23/11/24       | 24/11/24     | Business        | 203       | 102
+
+
+----------------------------------queries----------------------------------
+
+1--names of customers, airline name, departure airport, and arrival airport they have booked.
+SELECT CUSTOMER.CUSTOMER_NAME, BOOKING.AIRLINE_NAME, BOOKING.DEPARTURE_AIRPORT, BOOKING.ARRIVAL_AIRPORT
+FROM BOOKING 
+INNER JOIN CUSTOMER ON BOOKING.CUSTOMER_ID = CUSTOMER.CUSTOMER_ID;
+
+2--names of customers who have booked a room of type "Delux."
+SELECT CUSTOMER_NAME
+FROM CUSTOMER 
+WHERE CUSTOMER_ID IN (SELECT CUSTOMER_ID
+                      FROM BOOKING
+                      WHERE ROOM_BOOKING_ID IN (SELECT ROOM_BOOKING_ID
+                                                FROM ROOMBOOKINGDETAILS
+                                                WHERE ROOM_TYPE = 'Delux'));             
+                   
+                   
+3--List all flights that have a departure date between 20/11/24 and 22/11/24.
+SELECT AIRLINE_NAME, DEPARTURE_AIRPORT, ARRIVAL_AIRPORT, DEPARTURE_TIME
+FROM BOOKING
+WHERE DEPARTURE_TIME BETWEEN TO_DATE('20/11/24', 'DD/MM/YY') AND TO_DATE('22/11/24', 'DD/MM/YY');
+
+4--Retrieve the details of customers whose names start with the letter 'S' and have y in it.
+SELECT CUSTOMER_ID, CUSTOMER_NAME, CUSTOMER_CITY
+FROM CUSTOMER
+WHERE CUSTOMER_NAME LIKE 'S%y%';
+
+5--Calculate the total revenue generated from all room bookings.
+SELECT SUM(TOTAL_AMOUNT) AS TOTAL_REVENUE
+FROM ROOMBOOKINGDETAILS;
+
+6--Retrieve the airline name, customer name, and payment mode for all bookings.
+SELECT BOOKING.AIRLINE_NAME, CUSTOMER.CUSTOMER_NAME, TICKETDETAILS.PAYMENT_MODE
+FROM CUSTOMER
+INNER JOIN BOOKING ON CUSTOMER.CUSTOMER_ID = BOOKING.CUSTOMER_ID
+INNER JOIN TICKETDETAILS ON BOOKING.TICKET_ID = TICKETDETAILS.TICKET_ID;
+
+7--Find the cities of customers who booked tickets priced above $100.
+SELECT CUSTOMER_CITY
+FROM CUSTOMER 
+WHERE CUSTOMER_ID IN (SELECT CUSTOMER_ID
+                      FROM BOOKING
+                      WHERE TICKET_ID IN (SELECT TICKET_ID
+                                          FROM TICKETDETAILS
+                                          WHERE SEAT_PRICE = 100));
+
+8--Retrieve all room booking details where the total amount is between 200 and 500.
+SELECT ROOM_BOOKING_ID, ROOM_TYPE, ROOM_PRICE, NUMBER_OF_NIGHTS, TOTAL_AMOUNT
+FROM ROOMBOOKINGDETAILS
+WHERE TOTAL_AMOUNT BETWEEN 200 AND 500;
+
+9--Find the customer name and their room type, but only for those customers whose total room booking amount is greater than the average of all room bookings.
+SELECT CUSTOMER.CUSTOMER_NAME, ROOMBOOKINGDETAILS.ROOM_TYPE
+FROM CUSTOMER
+INNER JOIN BOOKING ON CUSTOMER.CUSTOMER_ID = BOOKING.CUSTOMER_ID
+INNER JOIN ROOMBOOKINGDETAILS ON BOOKING.ROOM_BOOKING_ID = ROOMBOOKINGDETAILS.ROOM_BOOKING_ID
+WHERE TOTAL_AMOUNT > (SELECT AVG(TOTAL_AMOUNT)
+                      FROM ROOMBOOKINGDETAILS);
+
+10--Display the total revenue generated from tickets for each payment mode, along with the count of bookings for that payment mode.
+SELECT PAYMENT_MODE,
+SUM(TICKETDETAILS.SEAT_PRICE) AS TOTAL_REVENUE,
+COUNT(BOOKING.BOOKING_ID) AS TOTAL_BOOKINGS
+FROM TICKETDETAILS 
+JOIN BOOKING ON TICKETDETAILS.TICKET_ID = BOOKING.TICKET_ID
+GROUP BY TICKETDETAILS.PAYMENT_MODE;
+
+11--Find the airlines that have more than 2 bookings in "Business" class. 
+SELECT AIRLINE_NAME, COUNT(*) AS BOOKING_COUNT
+FROM BOOKING
+WHERE CLASS_OF_TRAVEL = 'Business'
+GROUP BY AIRLINE_NAME
+HAVING COUNT(*) >= 1;
+
+
+12--Find pairs of flights where the departure airport matches the arrival airport.
+SELECT b1.BOOKING_ID AS FLIGHT_1, b2.BOOKING_ID AS FLIGHT_2, b1.DEPARTURE_AIRPORT
+FROM BOOKING b1, BOOKING b2
+WHERE b1.DEPARTURE_AIRPORT = b2.ARRIVAL_AIRPORT;
+
+13--Find customers whose city name contains "Ker".
+SELECT CUSTOMER_NAME, CUSTOMER_CITY 
+FROM CUSTOMER 
+WHERE CUSTOMER_CITY LIKE '%Ker%';
+
+14--Find all customers who have booked flights with "Airways".
+SELECT CUSTOMER_NAME 
+FROM CUSTOMER 
+WHERE CUSTOMER_ID IN (
+    SELECT CUSTOMER_ID 
+    FROM BOOKING 
+    WHERE AIRLINE_NAME = 'Airways');
+
+15--Find the customer name, airline name, flight route (departure and arrival airports),room type, and total room booking amount for all bookings.
+SELECT 
+    c.CUSTOMER_NAME, 
+    b.AIRLINE_NAME,
+    b.DEPARTURE_AIRPORT || ' to ' || b.ARRIVAL_AIRPORT AS FLIGHT_ROUTE, 
+    r.ROOM_TYPE, 
+    r.TOTAL_AMOUNT AS ROOM_TOTAL
+FROM BOOKING b
+INNER JOIN CUSTOMER c ON b.CUSTOMER_ID = c.CUSTOMER_ID
+INNER JOIN ROOMBOOKINGDETAILS r ON b.ROOM_BOOKING_ID = r.ROOM_BOOKING_ID;
+
+
+

@@ -35,37 +35,37 @@ Booking Table:
 SELECT TABLE_NAME FROM USER_TABLES;
 
 CREATE TABLE Customer (
-    customer_id INT PRIMARY KEY,
+    customer_id NUMBER PRIMARY KEY,
     customer_name VARCHAR2(100) NOT NULL,
     customer_city VARCHAR2(100) NOT NULL
 );
 
 CREATE TABLE TicketDetails (
-    ticket_id INT PRIMARY KEY,
+    ticket_id NUMBER PRIMARY KEY,
     seat_number VARCHAR2(10) NOT NULL,
-    seat_price DECIMAL(10, 2) NOT NULL
+    seat_price NUMBER(10, 2) NOT NULL
 );
 
 CREATE TABLE RoomBookingDetails (
-    room_booking_id INT PRIMARY KEY,
+    room_booking_id NUMBER PRIMARY KEY,
     room_type VARCHAR2(50) NOT NULL,
-    room_price DECIMAL(10, 2) NOT NULL,
-    number_of_nights INT NOT NULL,
-    total_amount DECIMAL(10, 2)
+    room_price NUMBER(10, 2) NOT NULL,
+    number_of_nights NUMBER NOT NULL,
+    total_amount NUMBER(10, 2)
 );
 
 CREATE TABLE Booking (
-    booking_id INT PRIMARY KEY,
-    customer_id INT NOT NULL,
-    airline_id INT NOT NULL,
+    booking_id NUMBER PRIMARY KEY,
+    customer_id NUMBER NOT NULL,
+    airline_id NUMBER NOT NULL,
     airline_name VARCHAR2(100) NOT NULL,
     departure_airport VARCHAR2(100) NOT NULL,
     arrival_airport VARCHAR2(100) NOT NULL,
     departure_time DATE NOT NULL,
     arrival_time DATE NOT NULL,
     class_of_travel VARCHAR2(20) NOT NULL,
-    ticket_id INT NOT NULL,
-    room_booking_id INT
+    ticket_id NUMBER NOT NULL,
+    room_booking_id NUMBER
 );
 
 desc Customer;

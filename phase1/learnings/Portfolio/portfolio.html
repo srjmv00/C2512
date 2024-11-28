@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            scroll-behavior: smooth;
+        }
+
+        section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        #home {
+            background-color: #000f1f;
+        }
+
+        #about {
+            background-color: #001429;
+            color: white;
+        }
+
+        #skills {
+            background-color: #051729; 
+        }
+
+        #education {
+            background-color: #000f1f;
+        }
+
+        #projects {
+            background-color: #051729;  
+        }
+
+        #contact {
+            background-color: #000f1f;
+        }
+
+        footer {
+            background-color: #343a40;
+            color: white;
+            padding: 20px 0;
+        }
+
+        .progress-bar {
+            background-color: #cabb31;
+        }
+
+        .profile-img {
+            width: 350px;
+            height: 350px;
+            border-radius: 10%;
+            object-fit: cover;
+            border: 3px solid #000b1b;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Portfolio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About Me</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">My Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact Me</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" style="color: #cabb31;">
+        <div class="container">
+            <h1>Welcome to My Portfolio</h1>
+            <h2 class="lead">Discover my work, skills, and experience.</h2>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about">
+        <div class="container">
+            <h1>About Me</h1>
+            <div>
+                <img src="me.jpg" alt="Your Photo" class="profile-img mb-3">
+            <h6>Entry level MERN stack Developer. Bringing a forth motivated attitude 
+                and a variety of powerful skills.. Seeking job to leverage solid 
+                skills in collaboration, communication, and development as a person as
+                 well as to passionately contribute my skills to the upliftment of the 
+                 company.. Please find my detailed Resume for your consideration. 
+                Should you need any more details, please do let me know.</h6>
+        
+            </div>
+        </div>
+    </section>
+
+    <!-- My Skills Section -->
+    <section id="skills" style="color: #c5c3ac;">
+        <div class="container">
+            <h1 class="text-center">My Skills</h1>
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <p>HTML / CSS</p>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" >90%</div>
+                    </div>
+                </div>
+                <div class="col-md-6 ">
+                    <p>Bootstrap</p>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+                    </div>
+                </div>
+                <div class="col-md-6 mt-3">
+                    <p>JAVASCRIPT</p>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
+                    </div>
+                </div>
+                <div class="col-md-6 mt-3">
+                    <p>REACT JS</p>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 70%;" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">70%</div>
+                    </div>
+                </div>
+                <div class="col-md-6 mt-3">
+                    <p>PYTHON</p>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">90%</div>
+                    </div>
+                </div>
+                <div class="col-md-6 mt-3">
+                    <p>NODE JS</p>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
+                    </div>
+                </div>
+                <div class="col-md-6 mt-3">
+                    <p>SQL</p>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
+                    </div>
+                </div>
+                <div class="col-md-6 mt-3">
+                    <p>MONGO DB</p>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 60%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">60%</div>
+                    </div>
+                </div>
+                <div class="col-md-6 mt-3">
+                    <p>FIGMA</p>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">90%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+            <h1 class="mb-5" style="color: #cabb31;">Education</h1>
+            <div class="row" style="justify-content: center; align-items: center; gap: 10px; color: #c5c3ac;">
+                <div class="col-md-4" style="border: 2px solid grey; border-radius: 10px; width: 420px; height: 200px; background-color: #0e2e4e;">
+                    <h4 class="mt-3">10 TH</h4>
+                    <h5 class="mt-3">Kendriya Vidyalaya Payyanur</h5>
+                    <p class="mt-3">Board : CBSE</p>
+                    <p class="mt-3">CGPA/% : 9.4</p>
+                </div>
+                <div class="col-md-4" style="border: 2px solid grey; border-radius: 10px; width: 420px; height: 200px; background-color: #0e2e4e;">
+                    <h4 class="mt-3">12 TH</h4>
+                    <h5 class="mt-3">GHSS South Thrikaripur</h5>
+                    <p class="mt-3">Board : Kerala Board Of Secondary Education</p>
+                    <p class="mt-3">CGPA/% : 96%</p>
+                </div>
+                <div class="col-md-4" style="border: 2px solid grey; border-radius: 10px; width: 420px; height: 200px; background-color: #0e2e4e;">
+                    <h4 class="mt-3">B TECH</h4>
+                    <h5 class="mt-3">Government Engineering College Wayanad</h5>
+                    <p class="mt-3">University : APJ Abdul Kalam Technological University</p>
+                    <p class="mt-3">CGPA/% : 7.2</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div style="margin-top: 60px; display: flex; align-items: center; flex-direction: column;" class="container">
+            <h1 style="color: white;">Projects</h1>
+            <div class="row">
+                <div class="col-md-4">
+                    <div style="border: 2px solid grey; border-radius: 10px; width: 420px; height: 500px; background-color: #0e2e4e; color: #c5c3ac;">
+                    <img class="mt-3" src="./ktrac2.jpeg" alt="Project 1" class="img-fluid" style="width: 120px; ">                     
+                    <img class="mt-3" src="./ktrac.jpeg" alt="Project 1" class="img-fluid" style="width: 120px; ">                     
+                       <h4 class="mt-3" >K-TRAC</h4>
+                       <p >A mobile application for tracking KSRTC buses.’K-TRAC’ is
+                         a KSRTC bus tracking system used to know the live
+                        location of the bus. The overall system consists of GPS module 
+                        that improves the accuracy of live tracking.
+                    </p>
+                    <p>1.BackEnd:NodeJs 2.FrontEnd:VueJs
+                        3.Firebase 4.OpenStreetMapVercel</p>
+                    </div>    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Me Section -->
+    <section id="contact">
+        <div class="container">
+            <h1 style="color: #cabb31;">Contact Me</h1>
+            <form>
+                <div class="mb-3">
+                    <input type="text" class="form-control" placeholder="Your Name">
+                </div>
+                <div class="mb-3">
+                    <input type="email" class="form-control" placeholder="Your Email">
+                </div>
+                <div class="mb-3">
+                    <textarea class="form-control" rows="3" placeholder="Your Message"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="container">
+            <p>&copy; 2024 sooraj m v. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

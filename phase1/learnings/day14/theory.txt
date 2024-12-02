@@ -6,9 +6,12 @@ Linux Architecture
 
 2. `Kernel Layer`:  
    - Core of the operating system.  
+   - It is responsible for each of the major actions of the Linux OS. 
    - Manages hardware resources, memory, processes, and devices.  
    - Types of kernels:
      - `Monolithic Kernel` (used by Linux): All functions run in one layer.
+     - Micro kernels
+     - Exo kernels
    
 3. `System Call Interface (Shell)`:  
    - Acts as a bridge between applications and the kernel.  
@@ -24,6 +27,7 @@ Linux Architecture
 
 6. `Shell`:  
    - Command-line interface (CLI) to interact with the kernel.  
+   - It can take commands through the user and runs the functions of the kernel.
    - Types: Bash, Zsh, etc.
 
 Diagram (Layers Top to Bottom)

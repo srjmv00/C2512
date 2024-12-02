@@ -1,0 +1,153 @@
+Here's a step-by-step guide to solving the 
+`Beginner Level Problem Statement` 
+for Linux commands in C++ development.
+
+---
+
+1. `Basic File and Directory Management`:
+
+`Create a directory for your C++ project`:
+```bash
+mkdir my_cpp_project
+
+```
+This will create a new directory called `cpp_vi_practice`.
+
+`List files in a directory`:
+```bash
+ls
+```
+This will list all the files and directories in the current directory.
+
+2.`Change to the project directory`:
+```bash
+cd my_cpp_project
+
+```
+This will move you into the `my_cpp_project` directory.
+
+3. Create a file :
+```bash
+touch greet.cpp
+
+```
+This will create a greet.cpp file.
+
+4. `Write a simple C++ program`:
+
+Create the `greet.cpp` file with a simple program, 
+using `nano`
+```bash
+nano greet.cpp
+
+```
+Add this code inside `greet.cpp`:
+```
+#include<iostream>
+using namespace std;
+
+int main(){
+
+	char name[255];
+	cout << "enter the name : " << endl;
+	cin >> name;
+	cout << "Greetings " << name << endl;
+	
+	return 0;
+}
+
+```
+5. `Compile the C++ program``:
+You can open and edit `greet.cpp` using `nano` :
+
+Make any necessary changes and then save the file 
+by pressing `^X,then type `y` then enter`
+
+```bash
+g++ greet.cpp
+```
+
+This compiles `greet.cpp` and creates an executable called `a.out`.
+
+6. `Run the compiled program`:
+```bash
+./a.out
+```
+The output should be:
+```
+enter the name : 
+sooraj
+Greetings sooraj
+
+```
+---
+
+7. `display the contents`:
+Using `cat` to View File Content`
+```bash
+cat greet.cpp
+```
+This will display the contents of greet.cpp
+
+8. `Modify the `greet.cpp` file `:
+
+`Edit the C++ file`:
+You can open and edit `number_check.cpp` using `nano` :
+```bash
+ nano greet.cpp
+```
+ #include<iostream>
+using namespace std;
+
+int main(){
+
+	char name[255];
+	cout << "enter the name : " << endl;
+	cin >> name;
+	cout << "Good Bye " << name << endl;
+	
+	return 0;
+}
+
+Make any necessary changes and then save the file 
+by pressing `^X,then type `y` then enter`
+---
+
+9. `Compile and run the modified program `:
+
+`Compile the C++ file`:
+```bash
+g++ greet.cpp
+```
+This will compile the `greet.cpp` file.
+---
+
+`Run the compiled program`:
+
+```bash
+ ./a.out
+ 
+```
+enter the name : 
+sooraj
+Good Bye sooraj
+
+
+10. `Delete the program file`:
+
+``Remove the C++ file`:
+```bash
+ rm greet.cpp
+```
+This will delete the `greet.cpp` file.
+
+11. `Remove an empty directory`:
+```bash
+rmdir my_cpp_project
+
+
+```
+This will delete the `my_cpp_project` directory if it's empty.
+```
+
+

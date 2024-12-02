@@ -1,0 +1,182 @@
+Here's a step-by-step guide to solving the 
+`Beginner Level Problem Statement` 
+for Linux commands in C++ development.
+
+---
+
+1. `Basic File and Directory Management`:
+
+`Create a directory for your C++ project`:
+```bash
+mkdir cpp_vi_practice
+
+```
+This will create a new directory called `cpp_vi_practice`.
+
+`List files in a directory`:
+```bash
+ls
+```
+This will list all the files and directories in the current directory.
+
+2.`Change to the project directory`:
+```bash
+cd cpp_vi_practice
+
+```
+This will move you into the `cpp_vi_practice` directory.
+
+3. `Compiling Simple C++ Programs`:
+
+`Write a simple C++ program`:
+Create the `vim number_check.cpp` file with a simple program, 
+using `vim`:
+
+```bash
+vim number_check.cpp
+
+```
+4. Add this code inside `number_check.cpp`:
+that checks if a number is positive, negative, or zero.
+```
+#include <iostream>
+     using namespace std;
+
+     int main() {
+         int number;
+         cout << "Enter a number: ";
+         cin >> number;
+         if (number > 0)
+             cout << "The number is positive." << endl;
+         else if (number < 0)
+             cout << "The number is negative." << endl;
+         else
+             cout << "The number is zero." << endl;
+         return 0;
+     }
+```
+5. Save and exit the file`:
+You can open and edit `number_check.cpp` using `vim` :
+```bash
+vim number_check.cpp
+```
+Make any necessary changes and then save the file 
+by pressing `:wq`
+
+`Compile the C++ program`:
+```bash
+g++ -o number.out number_check.cpp
+```
+This compiles `number_check.cpp` and creates an executable called `number.out`.
+
+`Run the compiled program`:
+```bash
+./number.out
+```
+The output should be:
+```
+enter the number : 7
+the number is positive
+```
+
+---
+
+6. `Basic Text Editing`:
+
+`Edit the C++ file`:
+You can open and edit `number_check.cpp` using `vim` :
+```bash
+vim number_check.cpp
+```
+
+ modify the program to check 
+   if the number is even or odd, 
+   in addition to being positive, negative, or zero.
+   
+   
+     1  #include <iostream>
+     2	using namespace std;
+     3	
+     4	int main(){
+     5		int number;
+     6		cout << "enter the number : ";
+     7		cin >> number;
+     8		if(number > 0){
+     9			if(number % 2 == 0){
+    10				cout << "the number is positive and even" << endl;
+    11			}
+    12			else{
+    13				cout << "the number is positive and odd" << endl;
+    14			}
+    15		}
+    16		else if(number < 0){
+    17			if(number % 2 == 0){
+    18				cout << "the number is negative and even" << endl;
+    19			}
+    20			else{
+    21				cout << "the number is negative and odd" << endl;
+    22			}
+    23		}
+    24		else{
+    25			cout << "the number is zero" << endl;
+    26		}
+    27		return 0;
+    28	}
+
+Make any necessary changes and then save the file 
+by pressing `:wq`
+---
+
+7. `Use `vim` to navigate and edit the file`:
+
+   - Use basic `vi` navigation and editing commands like `i` (insert), 
+   `x` (delete character), `dd` (delete line), 
+   `:w` (save), and `:q!` (quit) to update the code.
+
+---
+
+8. `Compile`:
+
+`Compile the C++ file`:
+```bash
+g++ -o number.out number_check.cpp
+```
+This will compile the `number_check.cpp` file.
+---
+
+9. `Run the compiled program`:
+
+```bash
+ ./number.out
+ 
+```
+enter the number : 4
+the number is positive and even
+
+10. `Using `cat` to View File Content`:
+
+`View the contents of the file`:
+```bash
+cat number_check.cpp
+```
+This will display the content of `number_check.cpp` in the terminal.
+
+---
+
+11. `Delete the program file`:
+
+``Remove the C++ file`:
+```bash
+rm number_check.cpp
+```
+This will delete the `number_check.cpp` file.
+
+12. `Remove an empty directory`:
+```bash
+rmdir cpp_vi_practice
+
+```
+This will delete the `cpp_vi_practice` directory if it's empty.
+```
+
+

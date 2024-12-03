@@ -11,7 +11,7 @@ for Linux commands in C++ development.
 mkdir my_cpp_project
 
 ```
-This will create a new directory called `cpp_vi_practice`.
+This will create a new directory called `my_cpp_project`.
 
 `List files in a directory`:
 ```bash
@@ -137,9 +137,9 @@ Good Bye sooraj
 
 ``Remove the C++ file`:
 ```bash
- rm greet.cpp
+ rm greet.cpp a.out
 ```
-This will delete the `greet.cpp` file.
+This will delete the `greet.cpp` file and a.out executable.
 
 11. `Remove an empty directory`:
 ```bash

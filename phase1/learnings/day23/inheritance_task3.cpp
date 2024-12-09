@@ -1,3 +1,8 @@
+//Problem 14: `Appliance and Refrigerator`
+//- `Base Class:` `Appliance`  
+//- Fields: `brand`, `powerConsumption`  
+//- Pure Virtual Behaviors: `turnOn()`, `turnOff()`.  
+
 #include <iostream>
 #include <cstring>
 using namespace std;
@@ -60,6 +65,10 @@ public:
         cout << "Capacity: " << capacity << " liters, Door Type: " << doorType << endl;
     }
 };
+
+//one two dynamic/static objects of the Derived class 
+//pointed by base class pointer
+//and call all behaviours using Base class pointer 
 
 int main() {
     Appliance* ref1 = new Refrigerator("Samsung", 150, 350, "Double Door");

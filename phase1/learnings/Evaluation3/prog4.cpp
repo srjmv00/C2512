@@ -41,8 +41,8 @@ public:
 public:
     Programmer(int v_id, int v_age, string v_name, string* v_tasks, int v_taskCount)
         : Employee(v_id, v_age, v_name), taskCount(make_unique<int>(v_taskCount)) {
-        tasks = make_unique<string[]>(taskCount);
-        for (int i = 0; i < taskCount; ++i) {
+        tasks = make_unique<string[]>(*taskCount);
+        for (int i = 0; i < *taskCount; ++i) {
             tasks[i] = v_tasks[i]; 
         }
     }
@@ -57,7 +57,7 @@ public:
     void printDetails() override {
         Employee::printDetails();
         cout << " Tasks: ";
-        for (int i = 0; i < taskCount; ++i) {
+        for (int i = 0; i < *taskCount; ++i) {
             cout << tasks[i] << " ";
         }
     }

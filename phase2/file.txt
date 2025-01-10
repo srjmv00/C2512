@@ -1,0 +1,38 @@
+#include<iostream>
+using namespace std;
+#include<string>
+#include<unistd.h> //sleep
+
+
+int main(){
+    string strusername = "q";
+    int strpassword = 1;
+
+
+    string username;
+    int password;
+    cout << "enter username : "; cin >> username;
+    cout << "enter password : "; cin >> password;
+
+    if(username == strusername && password == strpassword){
+        cout << "autentication success" << endl;
+
+        sleep(2);
+        cout <<endl;
+        cout <<endl;
+        cout << "Medical Inventory Management System" << endl;
+
+        cout <<endl;
+        cout <<endl;
+        cout << "Press any key to continue..."<< endl;
+        cin.get();  
+              
+        cout << "hii" << endl;
+
+    }else{
+        cout << "enter correct credentials" << endl;
+    }
+
+    return 0;
+
+} 

@@ -3,6 +3,35 @@ using namespace std;
 #include<string>
 #include<unistd.h> //sleep
 
+void display(){
+    cout << "Display Inventory Items..."<< endl;
+}
+
+void printMenu(){
+	cout <<"1. Add items"<< endl;
+	cout <<"2. Update items"<< endl;
+	cout <<"3. Display items"<< endl;
+	cout <<"4. Display low stock items"<< endl;
+	cout <<"5. Display expiry items"<< endl;
+	cout <<"6. Generate report"<< endl;
+    cout <<"7. Logout"<< endl;
+
+}
+
+void selectMenu(){
+    int choice;
+
+    do{
+        printMenu();
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        switch(choice){
+            case 2: addItems();
+            break;
+        }
+    }while(choice !=7);
+}
 
 int main(){
     string strusername = "q";
@@ -13,6 +42,8 @@ int main(){
     int password;
     cout << "enter username : "; cin >> username;
     cout << "enter password : "; cin >> password;
+    cin.get();  
+    
 
     if(username == strusername && password == strpassword){
         cout << "autentication success" << endl;
@@ -24,10 +55,22 @@ int main(){
 
         cout <<endl;
         cout <<endl;
-        cout << "Press any key to continue..."<< endl;
+        sleep(2);
+        cout << "Press Enter to continue..."<< endl;
         cin.get();  
-              
-        cout << "hii" << endl;
+
+        display(); 
+
+        sleep(2);
+        cout <<endl;
+        cout <<endl; 
+        cout << "Press Enter to continue..."<< endl;
+        cin.get(); 
+        cout <<endl;
+        cout <<endl;
+        printMenu();
+        selectMenu();
+      
 
     }else{
         cout << "enter correct credentials" << endl;

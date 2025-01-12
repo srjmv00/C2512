@@ -1,19 +1,40 @@
-void addItems(){
-    int input;
-    cout <<endl;cout <<endl;sleep(2);
-    cout << "Created a temporary array" << endl;
-    cout <<endl;cout <<endl;sleep(2);
-    cout << "Added Temporary Array..."<< endl;
-    cout <<endl;cout <<endl;sleep(2);
-    cout << "Display the elements in array by iteration" << endl;
-    cout <<endl;cout <<endl;sleep(2);
-    cout << "Press Enter to continue..."<< endl;
-    cin.get();
-    cin.get();  
-    cout << "For Update press U"<< endl;
-    cout << "For Save press S"<< endl;
-    cin >> input;
-    if(input == 'u' || input == 'U'){
-    update();
+void serveClient(int& client_socket_fd) {
+    char buffer[BUFFER_SIZE];
+    long arr[5];
+    std::cout<<read(client_socket_fd, buffer, BUFFER_SIZE);
+    int arritems = atol(buffer);
+    std::cout << arritems << std::endl;
+
+
+    // send response
+    // std::string sumStr = std::to_string(sum);
+    // // strcpy(buffer,sumStr.c_str());
+    // send(client_socket_fd, sumStr.c_str(), sumStr.size()+1,0);
+    std::cout << "\tresponse sent to client" << std::endl;
+
+    // release client // Close client socket
+    close(client_socket_fd);
+}
+void requestServer(int& client_socket_fd) {
+    char buffer[BUFFER_SIZE];
+    long arr[]={2,5,3,8,1};
+    // std::cout << "First Number:"; std::cin >> first;
+    for(int i=0;i<5;i++){
+        std::cout <<arr[i] <<std::endl;
+        std::string arrStr = std::to_string(arr[i]);
+        strcpy(buffer,arrStr.c_str());
+        send(client_socket_fd,buffer, arrStr.size()+1,0);
     }
+
+
+
+    read(client_socket_fd, buffer, BUFFER_SIZE);
+    //
+    // long sum = atol(buffer);
+    // std::cout << "So," << first << " + " 
+    //                         << second << " = " 
+    //                         << sum << std::endl;
+    // std::cout << "I am thankful to my sum calculator server!!!" << std::endl;
+    
+
 }

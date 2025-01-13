@@ -1,25 +1,23 @@
+void serveClient(int &client_socket_fd)
 {
     char buffer[BUFFER_SIZE];
 
-    // Input the array
-    int size;
-    std::cout << "Enter size of array: ";
-    std::cin >> size;
+    // Receive the size of the array
+    read(client_socket_fd, buffer, BUFFER_SIZE);
+    int size = atoi(buffer);
 
+    // Receive the array
     std::vector<double> arr(size);
-    std::cout << "Enter elements of the array: \n";
     for (int i = 0; i < size; ++i)
     {
-        std::cout << "index[" << i << "]: ";
-        std::cin >> arr[i];
+        read(client_socket_fd, buffer, BUFFER_SIZE);
+        arr[i] = atof(buffer);
     }
 
-    // Send the size of the array
-    std::string sizeStr = std::to_string(size);
-    strcpy(buffer, sizeStr.c_str());
-    write(client_socket_fd, buffer, BUFFER_SIZE);
+    // Sort the array
+    quickSort(arr, 0, size - 1);
 
-    // Send the array
+    // Send the sorted array back
     for (const auto &num : arr)
     {
         std::string numStr = std::to_string(num);
@@ -27,46 +25,8 @@
         write(client_socket_fd, buffer, BUFFER_SIZE);
     }
 
-    // Receive the sorted array
-    std::cout << "Received from server\nSorted array : ";
-    for (int i = 0; i < size; ++i)
-    {
-        read(client_socket_fd, buffer, BUFFER_SIZE);
-        std::cout << atof(buffer) << " ";
-    }
-    std::cout << std::endl;
-}
+    std::cout << "Array sorted and sent to client." << std::endl;
 
-// -------------------------------------------------------------------
-
-int partition(std::vector<double> &vec, int low, int high)
-{
-
-    int pivot = vec[high];
-    int i = (low - 1);
-
-    for (int j = low; j <= high - 1; j++)
-    {
-        if (vec[j] <= pivot)
-        {
-            i++;
-            std::swap(vec[i], vec[j]);
-        }
-    }
-
-    std::swap(vec[i + 1], vec[high]);
-
-    return (i + 1);
-}
-
-void quickSort(std::vector<double> &vec, int low, int high)
-{
-    if (low < high)
-    {
-
-        int pi = partition(vec, low, high);
-
-        quickSort(vec, low, pi - 1);
-        quickSort(vec, pi + 1, high);
-    }
+    // Close client socket
+    close(client_socket_fd);
 }

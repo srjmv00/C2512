@@ -1,3 +1,4 @@
+
 #include<iostream>
 #include<vector>
 #include<climits>
@@ -6,8 +7,10 @@
 #include<algorithm>
 #include<unistd.h>
 #include<cstring>
-#include<sys/ipc.h>
 #include<sys/msg.h>
+#include<sys/wait.h>
+#define MSG_KEY 1234
+
 
 using namespace std;
 
@@ -30,7 +33,7 @@ struct msg_buffer {
     int data[5];
 };
 
-void findSum(int a[], int& sum) {
+void findSum(int a[], int& sum, ) {
     for (int i = 0; i < 5; i++) {
         sum += a[i];
     }
@@ -66,7 +69,7 @@ void server(int msgid) {
 
     // Receive the message
     msgrcv(msgid, &message, sizeof(message.data), 1, 0);
-    cout << "Server: Received durations" << endl;
+    cout << "Server: Received durations" << message<< endl;
 
     int sum = 0;
     findSum(message.data, sum);
@@ -86,26 +89,27 @@ int main() {
     vec.emplace_back("am4", 3);
     vec.emplace_back("am5", 1);
 
-    // Create a message queue
-    key_t key = ftok("progfile", 65);
-    int msgid = msgget(key, 0666 | IPC_CREAT);
+    int msgid = msgget(MSG_KEY, 0666 | IPC_CREAT);
 
-    pid_t pid = fork();
-
-    if (pid == 0) {
-        // Child process for the client
+    pid_t pid = -1;
+    {
+        pid = fork();
+        if (pid == 0) {
         client(vec, msgid);
-        exit(0);
-    } else {
-        // Parent process for the server
+        return 0;
+        }
+    }
+    {
+        pid = fork();
+        if (pid == 0) {
         server(msgid);
+        return 0;
+        }
     }
 
-    // Wait for both processes to finish
-    wait(NULL);
+    wait(nullptr);
 
-    // Destroy the message queue
-    msgctl(msgid, IPC_RMID, NULL);
+    msgctl(msgid, IPC_RMID, nullptr);
 
     return 0;
 }

@@ -8,36 +8,36 @@
 
 using namespace std;
 
-class VaccinationRecord{
+class Surgery{
 	private:
-		string vaccinationId;
-		int dosesAdministered;
+		string surgeryId;
+		int Duration;
 	public:
-		VaccinationRecord(string vaccinationId, int dosesAdministered){
-			this -> vaccinationId = vaccinationId;
-			this -> dosesAdministered = dosesAdministered;
+		Surgery(string surgeryId, int Duration){
+			this -> surgeryId = surgeryId;
+			this -> Duration = Duration;
 		}
 
-		int getDose(){ return this -> dosesAdministered; };
+		int getDuration(){ return this -> Duration; };
 
 };
 
 int main(){
-	vector<VaccinationRecord> vaccinations;
-	vaccinations.emplace_back("ID001", 3);
-	vaccinations.emplace_back("ID002", 2);
-	vaccinations.emplace_back("ID003", 1);
-	vaccinations.emplace_back("ID004", 5);
-	vaccinations.emplace_back("ID005", 4);
+	vector<Surgery> vec;
+	vec.emplace_back("ID001", 3);
+	vec.emplace_back("ID002", 2);
+	vec.emplace_back("ID003", 1);
+	vec.emplace_back("ID004", 5);
+	vec.emplace_back("ID005", 4);
 
-	int doses[vaccinations.size()] = {0};
+	int dur[vec.size()] = {0};
 	
-	for(int i = 0; i < vaccinations.size(); i++){
-		doses[i] = vaccinations[i].getDose();
+	for(int i = 0; i < vec.size(); i++){
+		dur[i] = vec[i].getDuration();
 	}
 
 	
-	int numOfElements = vaccinations.size();
+	int numOfElements = vec.size();
 
 	const char* pipe1 = "pipe1";
 	const char* pipe2 = "pipe2";
@@ -57,9 +57,9 @@ int main(){
 	write(pipe_one_write_fd, &numOfElements, sizeof(int));
 	cout << "Client sent number of elements: " << numOfElements << endl ;
 
-	write(pipe_one_write_fd, doses, sizeof(doses));
-	cout << "Client sent doses : ";
-	for(int dose:doses){
+	write(pipe_one_write_fd, dur, sizeof(dur));
+	cout << "Client sent dur : ";
+	for(int dose:dur){
 		cout << dose << "\t";
 	}
 	cout << endl;

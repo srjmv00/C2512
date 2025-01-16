@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -35,16 +36,16 @@ int main(){
 	read(pipe_one_read_fd, &numOfElements, sizeof(int));
 	cout << "Server received number of elements: "<< numOfElements << endl ;
 	
-	int doses[numOfElements] = {0};
-	read(pipe_one_read_fd, doses, sizeof(int) * numOfElements);
-	cout << "Server received doses: ";
-	for(int dose : doses){
-		cout << dose << "\t";
+	int dur[numOfElements] = {0};
+	read(pipe_one_read_fd, dur, sizeof(int) * numOfElements);
+	cout << "Server received dur: ";
+	for(int d : dur){
+		cout << d << "\t";
 	}
 	cout << endl;
 	close(pipe_one_read_fd);
 	
-	int sum = findSum(doses, numOfElements);
+	int sum = findSum(dur, numOfElements);
 	write(pipe_two_write_fd, &sum, sizeof(int));
 	cout << "Sum sent from server: " << sum << endl;
 

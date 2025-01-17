@@ -1,96 +1,63 @@
 #include <iostream>
-#include <fstream>
-#include <vector>
 #include <string>
+using namespace std;
 
-class BankAccount {
-private:
-    double balance;
-    int number;
-    std::string name; //char name[255]
-    bool active;
-    int transCount;
+void showAdminPage() {
+    cout << "\nWelcome to the Admin Page!" << endl;
+}
 
-public:
-    BankAccount() : balance(0), number(0), name(""), active(false), transCount(0) {}
-    BankAccount(int number, const std::string& name, double balance, bool active)
-        : number(number), name(name), balance(balance), active(active), transCount(0) {}
+void showManagerPage() {
+    cout << "\nWelcome to the Manager Page!" << endl;
+}
 
-    // Accessors and Mutators
-    int getNumber() const { return number; }
-    std::string getName() const { return name; }
-    double getBalance() const { return balance; }
-    bool isActive() const { return active; }
-    int getTransCount() const { return transCount; }
+void showPharmacistPage() {
+    cout << "\nWelcome to the Pharmacist Page!" << endl;
+}
 
-    void setNumber(int num) { number = num; }
-    void setName(const std::string& n) { name = n; }
-    void setBalance(double b) { balance = b; }
-    void setActive(bool a) { active = a; }
-    void setTransCount(int count) { transCount = count; }
+bool authenticate(string username, string password) {
+    // This function will check the username and password.
+    // For simplicity, let's assume predefined credentials.
 
-    // Methods
-    void deposit(double amount) {
-        if (amount > 0) {
-            balance += amount;
-            transCount++;
-        }
+    if (username == "admin" && password == "admin123") {
+        showAdminPage();
+        return true;
     }
-
-    bool withdraw(double amount) {
-        if (amount > 0 && balance >= amount) {
-            balance -= amount;
-            transCount++;
-            return true;
-        }
+    else if (username == "manager" && password == "manager123") {
+        showManagerPage();
+        return true;
+    }
+    else if (username == "pharmacist" && password == "pharma123") {
+        showPharmacistPage();
+        return true;
+    }
+    else {
+        cout << "Invalid username or password!" << endl;
         return false;
     }
-
-    // Serialize and Deserialize for binary file
-    void serialize(std::ofstream& out) const {
-        size_t nameSize = name.size();
-        out.write(reinterpret_cast<const char*>(&number), sizeof(number));
-        out.write(reinterpret_cast<const char*>(&balance), sizeof(balance));
-        out.write(reinterpret_cast<const char*>(&active), sizeof(active));
-        out.write(reinterpret_cast<const char*>(&transCount), sizeof(transCount));
-        out.write(reinterpret_cast<const char*>(&nameSize), sizeof(nameSize));
-        out.write(name.c_str(), nameSize);
-    }
-
-    void deserialize(std::ifstream& in) {
-        size_t nameSize;
-        in.read(reinterpret_cast<char*>(&number), sizeof(number));
-        in.read(reinterpret_cast<char*>(&balance), sizeof(balance));
-        in.read(reinterpret_cast<char*>(&active), sizeof(active));
-        in.read(reinterpret_cast<char*>(&transCount), sizeof(transCount));
-        in.read(reinterpret_cast<char*>(&nameSize), sizeof(nameSize));
-        name.resize(nameSize);
-        in.read(&name[0], nameSize);
-    }
-};
-
-class BankAccountRepo {
-private:
-    const std::string filename = "account.txt";
-
-public:
-    void create(const BankAccount& account) {
-        std::ofstream out(filename, std::ios::binary | std::ios::app);
-        if (!out) {
-            std::cerr << "Error opening file for writing!" << std::endl;
-            return;
-        }
-        account.serialize(out);
-        out.close();
-    }
-};
+}
 
 int main() {
-    BankAccountRepo repo;
+    string username, password;
+    int attempts = 3;
 
-    // Create accounts
-    repo.create(BankAccount(1, "Alice", 5000, true));   //4+(8+5)+8+1+4 = 30        = 4 + 255 + 8 + 1 + 4 = 300
-    repo.create(BankAccount(2, "Bob", 3000, true));     //4+(8+3)+8+1+4 = 28 = 58   =                       
-    repo.create(BankAccount(3, "Charlie", 7000, false));//4+(8+7)+8+1+4 = 32 = 90                         = 900
+    cout << "Login System\n";
     
+    while (attempts > 0) {
+        cout << "\nEnter Username: ";
+        cin >> username;
+        cout << "Enter Password: ";
+        cin >> password;
+
+        if (authenticate(username, password)) {
+            break;  // Successful login, break out of the loop
+        }
+        attempts--;
+        cout << "Remaining attempts: " << attempts << endl;
+    }
+
+    if (attempts == 0) {
+        cout << "You have reached the maximum number of attempts!" << endl;
+    }
+
+    return 0;
 }

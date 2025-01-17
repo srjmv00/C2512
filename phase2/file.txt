@@ -1,115 +1,96 @@
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include <string>
 
-#include<iostream>
-#include<vector>
-#include<climits>
-#include<string>
-#include<thread>
-#include<algorithm>
-#include<unistd.h>
-#include<cstring>
-#include<sys/msg.h>
-#include<sys/wait.h>
-#define MSG_KEY 1234
-
-
-using namespace std;
-
-class Surgery {
+class BankAccount {
 private:
-    string surgeryId;
-    int Duration;
+    double balance;
+    int number;
+    std::string name; //char name[255]
+    bool active;
+    int transCount;
 
 public:
-    Surgery(string surgeryId, int Duration) : surgeryId(surgeryId), Duration(Duration) {}
+    BankAccount() : balance(0), number(0), name(""), active(false), transCount(0) {}
+    BankAccount(int number, const std::string& name, double balance, bool active)
+        : number(number), name(name), balance(balance), active(active), transCount(0) {}
 
-    int getDuration() {
-        return this->Duration;
+    // Accessors and Mutators
+    int getNumber() const { return number; }
+    std::string getName() const { return name; }
+    double getBalance() const { return balance; }
+    bool isActive() const { return active; }
+    int getTransCount() const { return transCount; }
+
+    void setNumber(int num) { number = num; }
+    void setName(const std::string& n) { name = n; }
+    void setBalance(double b) { balance = b; }
+    void setActive(bool a) { active = a; }
+    void setTransCount(int count) { transCount = count; }
+
+    // Methods
+    void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+            transCount++;
+        }
+    }
+
+    bool withdraw(double amount) {
+        if (amount > 0 && balance >= amount) {
+            balance -= amount;
+            transCount++;
+            return true;
+        }
+        return false;
+    }
+
+    // Serialize and Deserialize for binary file
+    void serialize(std::ofstream& out) const {
+        size_t nameSize = name.size();
+        out.write(reinterpret_cast<const char*>(&number), sizeof(number));
+        out.write(reinterpret_cast<const char*>(&balance), sizeof(balance));
+        out.write(reinterpret_cast<const char*>(&active), sizeof(active));
+        out.write(reinterpret_cast<const char*>(&transCount), sizeof(transCount));
+        out.write(reinterpret_cast<const char*>(&nameSize), sizeof(nameSize));
+        out.write(name.c_str(), nameSize);
+    }
+
+    void deserialize(std::ifstream& in) {
+        size_t nameSize;
+        in.read(reinterpret_cast<char*>(&number), sizeof(number));
+        in.read(reinterpret_cast<char*>(&balance), sizeof(balance));
+        in.read(reinterpret_cast<char*>(&active), sizeof(active));
+        in.read(reinterpret_cast<char*>(&transCount), sizeof(transCount));
+        in.read(reinterpret_cast<char*>(&nameSize), sizeof(nameSize));
+        name.resize(nameSize);
+        in.read(&name[0], nameSize);
     }
 };
 
-// Define the message buffer structure
-struct msg_buffer {
-    long msg_type;
-    int data[5];
+class BankAccountRepo {
+private:
+    const std::string filename = "account.txt";
+
+public:
+    void create(const BankAccount& account) {
+        std::ofstream out(filename, std::ios::binary | std::ios::app);
+        if (!out) {
+            std::cerr << "Error opening file for writing!" << std::endl;
+            return;
+        }
+        account.serialize(out);
+        out.close();
+    }
 };
-
-void findSum(int a[], int& sum, ) {
-    for (int i = 0; i < 5; i++) {
-        sum += a[i];
-    }
-}
-
-void client(vector<Surgery>& vec, int msgid) {
-    int size = vec.size();
-    msg_buffer message;
-    message.msg_type = 1;
-
-    for (int i = 0; i < size; i++) {
-        message.data[i] = vec[i].getDuration();
-    }
-
-    // Send the message
-    msgsnd(msgid, &message, sizeof(message.data), 0);
-    cout << "Client: Sent durations" << endl;
-
-    sleep(2);
-
-    // Receive the sum from the server
-    int sum = 0;
-    msgrcv(msgid, &message, sizeof(int), 2, 0);
-    sum = message.data[0];
-
-    cout << "Total sum: " << sum << endl;
-}
-
-void server(int msgid) {
-    sleep(1);
-
-    msg_buffer message;
-
-    // Receive the message
-    msgrcv(msgid, &message, sizeof(message.data), 1, 0);
-    cout << "Server: Received durations" << message<< endl;
-
-    int sum = 0;
-    findSum(message.data, sum);
-
-    // Send the sum back to the client
-    message.msg_type = 2;
-    message.data[0] = sum;
-    msgsnd(msgid, &message, sizeof(int), 0);
-    cout << "Sum sent: " << sum << endl;
-}
 
 int main() {
-    vector<Surgery> vec;
-    vec.emplace_back("am1", 2);
-    vec.emplace_back("am2", 5);
-    vec.emplace_back("am3", 6);
-    vec.emplace_back("am4", 3);
-    vec.emplace_back("am5", 1);
+    BankAccountRepo repo;
 
-    int msgid = msgget(MSG_KEY, 0666 | IPC_CREAT);
-
-    pid_t pid = -1;
-    {
-        pid = fork();
-        if (pid == 0) {
-        client(vec, msgid);
-        return 0;
-        }
-    }
-    {
-        pid = fork();
-        if (pid == 0) {
-        server(msgid);
-        return 0;
-        }
-    }
-
-    wait(nullptr);
-
-    msgctl(msgid, IPC_RMID, nullptr);
-
-    return 0;
+    // Create accounts
+    repo.create(BankAccount(1, "Alice", 5000, true));   //4+(8+5)+8+1+4 = 30        = 4 + 255 + 8 + 1 + 4 = 300
+    repo.create(BankAccount(2, "Bob", 3000, true));     //4+(8+3)+8+1+4 = 28 = 58   =                       
+    repo.create(BankAccount(3, "Charlie", 7000, false));//4+(8+7)+8+1+4 = 32 = 90                         = 900
+    
 }
